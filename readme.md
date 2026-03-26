@@ -1,4 +1,7 @@
 # WhatsApp Chat Viewer (Standalone Desktop App)
+<p align="center">
+  <img src="assets/WhatsappParser.png" width="100">
+</p>
 
 ## Overview
 
@@ -29,17 +32,8 @@ The goal of this project is to:
 ---
 
 ## Project Structure
-project/
-├── app.py # Main application logic
-├── parser.py # Chat parsing engine
-├── parser_thread.py # Background parsing (QThread)
-├── components/
-│ └── message_bubble.py # Chat bubble UI component
-├── ui/
-│ └── main.ui # UI layout (Qt Designer)
-└── assets/
-├── bg.png # Background image
-└── icon.png/.ico # App icon
+
+(pending)
 
 ## Application Workflow
 
@@ -159,12 +153,56 @@ A production-grade desktop application that:
 ### Prerequisites
 
 - Python 3.x
-- PyQt6
+- pip (Python package manager)
 
-### Installation
+---
 
+## Running Without Compilation (Development Mode)
+
+1. Clone the repository:
+```bash
+git clone https://github.com/alokhudali/Whatsapp-Chat-Parser
+cd Whatsapp-Chat-Parser
+```
+2. Install dependencies:
 ```bash
 pip install -r requirements.txt
-
-### Run the Application
+```
+3. Run the application:
+```bash
 python app.py
+```
+This will launch the application directly using Python. Recommended for development and testing.
+
+## Building Executable (PyInstaller)
+
+Make sure PyInstaller is installed:
+
+```bash
+pip install pyinstaller
+```
+### Linux / macOS
+
+```bash
+pyinstaller app.py \
+--onefile \
+--windowed \
+--add-data "assets:assets"
+```
+### Windows
+```cmd
+pyinstaller app.py ^
+--onefile ^
+--windowed ^
+--add-data "assets;assets"
+```
+### Output
+
+After compilation: Executable will be available in the dist/ folder
+- Linux/macOS: dist/app
+- Windows: dist/app.exe
+
+### Notes
+- `--onefile` bundles everything into a single executable
+- `--windowed` disables terminal/console window
+- `--add-data` ensures assets (icons, background) are included
