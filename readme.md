@@ -1,5 +1,5 @@
 ## (In Progress)
-# WhatsApp Chat Viewer
+# WhatsApp Chat Viewer (Parser)
 <p align="center">
   <img src="assets/WhatsappParser.png" width="100">
 </p>
