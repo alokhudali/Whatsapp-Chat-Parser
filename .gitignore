@@ -1,0 +1,44 @@
+# Python cache
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+
+# Virtual environments
+.venv/
+venv/
+env/
+
+# Build & distribution
+build/
+dist/
+*.spec
+
+# PyInstaller artifacts
+*.toc
+*.pkg
+*.pyz
+*.zip
+*.exe
+*.html
+warn-*.txt
+
+# Local chats (user data)
+chats/
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# IDE settings
+.vscode/
+.idea/
+
+# Logs
+*.log
+
+# UI compiled files (optional, ignore if regenerating)
+ui/*.py
+
+# Cache folders anywhere
+**/__pycache__/
