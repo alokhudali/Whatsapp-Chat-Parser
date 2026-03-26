@@ -1,4 +1,4 @@
-# WhatsApp Chat Viewer (Standalone Desktop App)
+# WhatsApp Chat Viewer
 <p align="center">
   <img src="assets/WhatsappParser.png" width="100">
 </p>
