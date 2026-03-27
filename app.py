@@ -8,12 +8,12 @@ from PyQt6.QtWidgets import (
 from PyQt6.QtCore import Qt
 from PyQt6.QtGui import QPainter, QPixmap, QIcon
 
-from ui.ui_main import Ui_MainWindow   # ✅ compiled UI
+from ui.ui_main import Ui_MainWindow   # compiled UI
 from components.message_bubble import MessageBubble
 from components.parser_thread import ParserThread
 
 
-# ✅ Resource path (for PyInstaller)
+# Resource path (for PyInstaller)
 def resource_path(relative_path):
     try:
         base_path = sys._MEIPASS
@@ -36,16 +36,16 @@ class WhatsAppViewer(QMainWindow):
     def __init__(self):
         super().__init__()
 
-        # ✅ Setup UI (NO loadUi anymore)
+        # Setup UI (NO loadUi anymore)
         self.ui = Ui_MainWindow()
         self.ui.setupUi(self)
 
         self.setWindowTitle("WhatsApp Chat Viewer")
 
-        # ✅ Access UI elements via self.ui
+        # Access UI elements via self.ui
         self.ui.actionImport_Chat.triggered.connect(self.import_chat)
 
-        # ✅ Load assets safely
+        # Load assets safely
         self.bg_pixmap = QPixmap(resource_path("assets/bg.jpg"))
         self.setWindowIcon(QIcon(resource_path("assets/WP.ico")))
 
@@ -68,7 +68,7 @@ class WhatsAppViewer(QMainWindow):
 
         center_window(self)
 
-    # 🎨 BACKGROUND
+    # BACKGROUND
     def paintEvent(self, event):
         painter = QPainter(self)
 
@@ -86,7 +86,7 @@ class WhatsAppViewer(QMainWindow):
 
         painter.drawPixmap(0, 0, scaled, x, y, self.width(), self.height())
 
-    # 📂 IMPORT CHAT
+    # IMPORT CHAT
     def import_chat(self):
         file_path, _ = QFileDialog.getOpenFileName(self, "Open Chat", "", "*.txt")
 
@@ -113,7 +113,7 @@ class WhatsAppViewer(QMainWindow):
         user, ok = QInputDialog.getItem(self, "Who are you?", "Select:", self.users, 0, False)
         self.me = user if ok else self.users[0]
 
-    # ⚡ LAZY LOAD
+    # LAZY LOAD
     def load_batch(self):
         end = self.current_index + self.batch_size
 

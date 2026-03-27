@@ -54,7 +54,7 @@ class MessageBubble(QWidget):
         self.container_layout.setContentsMargins(10, 6, 10, 6)
         self.container_layout.setSpacing(3)
 
-        # ================= SYSTEM MESSAGE =================
+        # SYSTEM MESSAGE 
         if sender == "System":
             self.container.setStyleSheet("""
                 QWidget {
@@ -91,7 +91,7 @@ class MessageBubble(QWidget):
             self.outer_layout.addStretch()
             return
 
-        # ================= USER MESSAGE =================
+        # USER MESSAGE
         bubble_color = "#dcf8c6" if is_me else "#ffffff"
 
         if is_me:
@@ -172,7 +172,7 @@ class MessageBubble(QWidget):
             self.outer_layout.addWidget(self.container)
             self.outer_layout.addStretch()
 
-    # 🔥 UPDATED WIDTH (wider bubbles)
+    # UPDATED WIDTH (wider bubbles)
     def update_width(self, parent_width):
         max_width = int(parent_width * 0.72)  # increased from 0.6 → 0.72
         self.container.setMaximumWidth(max_width)

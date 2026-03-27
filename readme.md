@@ -34,7 +34,20 @@ The goal of this project is to:
 
 ## Project Structure
 
-(pending)
+├── app.py  
+├── assets  
+│   ├── WP.ico  
+│   ├── WhatsappParser.png  
+│   └── bg.jpg  
+├── components  
+│   ├── message_bubble.py  
+│   ├── parser.py  
+│   └── parser_thread.py  
+├── readme.md  
+├── requirements.txt  
+└── ui  
+    ├── main.ui  
+    └── ui_main.py  
 
 ## Application Workflow
 
@@ -87,9 +100,8 @@ Includes:
 - WhatsApp-like chat layout
 - Dynamic bubble sizing (~72% of available width)
 - Smooth scrolling
-- Static background image (aspect ratio preserved using `paintEvent`)
-- Window centered on launch
-- Custom application icon
+- Static background image
+
 
 ### 7. Performance Optimization
 
@@ -127,18 +139,8 @@ Includes:
 
 ---
 
-## Final Outcome
 
-A production-grade desktop application that:
-
-- Mimics WhatsApp UI
-- Handles real-world chat data
-- Performs efficiently with large files
-- Works across Windows, Linux, and macOS
-
----
-
-## Possible Extensions
+## Possible Extensions (Not yet implemented)
 
 - Message grouping (hide repeated sender names)
 - Inline timestamps within message bubbles

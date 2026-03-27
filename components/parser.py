@@ -23,7 +23,7 @@ def parse_chat(file_path):
                 sender = match.group(3).strip()
                 message = match.group(4).strip()
 
-                # 🔥 FIX: ERROR sender → system message WITH prefix
+                # ERROR sender → system message WITH prefix
                 if sender.upper() == "ERROR":
                     full_message = f"ERROR: {message}"
 
