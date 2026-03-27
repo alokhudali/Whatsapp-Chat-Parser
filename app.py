@@ -2,8 +2,7 @@ import sys
 import os
 
 from PyQt6.QtWidgets import (
-    QApplication, QMainWindow, QFileDialog,
-    QMessageBox, QInputDialog, QLabel, QVBoxLayout, QDialog
+    QApplication, QMainWindow, QFileDialog, QMessageBox
 )
 from PyQt6.QtCore import Qt
 from PyQt6.QtGui import QPainter, QPixmap, QIcon
@@ -11,9 +10,9 @@ from PyQt6.QtGui import QPainter, QPixmap, QIcon
 from ui.ui_main import Ui_MainWindow
 from components.message_bubble import MessageBubble
 from components.parser_thread import ParserThread
+from components.menu import show_about, show_user_dialog
 
 
-# Resource path (for PyInstaller)
 def resource_path(relative_path):
     try:
         base_path = sys._MEIPASS
@@ -41,9 +40,11 @@ class WhatsAppViewer(QMainWindow):
 
         self.setWindowTitle("WhatsApp Chat Viewer")
 
-        # MENU
+        # MENU CONNECTIONS
         self.ui.actionImport_Chat.triggered.connect(self.import_chat)
-        self.ui.actionAbout.triggered.connect(self.show_about)
+        self.ui.actionAbout.triggered.connect(
+            lambda: show_about(self, resource_path)
+        )
 
         # Assets
         self.bg_pixmap = QPixmap(resource_path("assets/bg.jpg"))
@@ -53,7 +54,6 @@ class WhatsAppViewer(QMainWindow):
         self.users = []
         self.me = None
 
-        # Lazy loading
         self.batch_size = 100
         self.current_index = 0
 
@@ -67,58 +67,7 @@ class WhatsAppViewer(QMainWindow):
 
         center_window(self)
 
-    # ABOUT POPUP
-    def show_about(self):
-        dialog = QDialog(self)
-
-        dialog.setWindowFlags(
-            Qt.WindowType.Dialog |
-            Qt.WindowType.CustomizeWindowHint |
-            Qt.WindowType.WindowTitleHint |
-            Qt.WindowType.WindowCloseButtonHint
-        )
-
-        dialog.setWindowTitle("About")
-        dialog.setFixedSize(320, 320)
-
-        layout = QVBoxLayout(dialog)
-        layout.setAlignment(Qt.AlignmentFlag.AlignCenter)
-
-        # ICON
-        icon_label = QLabel()
-        pixmap = QPixmap(resource_path("assets/WhatsappParser.png"))
-        icon_label.setPixmap(
-            pixmap.scaled(
-                110, 110,
-                Qt.AspectRatioMode.KeepAspectRatio,
-                Qt.TransformationMode.SmoothTransformation
-            )
-        )
-        icon_label.setAlignment(Qt.AlignmentFlag.AlignCenter)
-
-        # TITLE
-        title = QLabel("WhatsApp Chat Viewer")
-        title.setAlignment(Qt.AlignmentFlag.AlignCenter)
-        title.setStyleSheet("font-size: 16px; font-weight: bold;")
-
-        # DESCRIPTION
-        desc = QLabel(
-            "Standalone viewer for WhatsApp chat exports.\n\n"
-            "Built with PyQt6\n"
-            "Version 1.0"
-        )
-        desc.setAlignment(Qt.AlignmentFlag.AlignCenter)
-        desc.setWordWrap(True)
-
-        layout.addWidget(icon_label)
-        layout.addSpacing(10)
-        layout.addWidget(title)
-        layout.addSpacing(5)
-        layout.addWidget(desc)
-
-        dialog.exec()
-
-    # BACKGROUND    
+    # BACKGROUND
     def paintEvent(self, event):
         painter = QPainter(self)
 
@@ -152,34 +101,21 @@ class WhatsAppViewer(QMainWindow):
         self.messages = messages
         self.detect_users()
 
-        # STOP if user cancels selection
-        if not self.ask_user():
+        # 🔥 USE MENU MODULE
+        ok, user = show_user_dialog(self, self.users)
+
+        if not ok:
             return
+
+        self.me = user
 
         self.clear_chat()
         self.current_index = 0
         self.load_batch()
 
-    # USER SELECTION
-    def ask_user(self):
-        user, ok = QInputDialog.getItem(
-            self,
-            "Who are you?",
-            "Select:",
-            self.users,
-            0,
-            False
-        )
-
-        if not ok:
-            return False  # user cancelled
-
-        self.me = user
-        return True
-
     def detect_users(self):
         self.users = list({m["sender"] for m in self.messages if m["type"] == "user"})
-  
+
     # LAZY LOAD
     def load_batch(self):
         end = self.current_index + self.batch_size
@@ -218,7 +154,6 @@ class WhatsAppViewer(QMainWindow):
                 w.update_width(self.width())
 
 
-# RUN APP
 if __name__ == "__main__":
     app = QApplication(sys.argv)
     window = WhatsAppViewer()
