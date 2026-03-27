@@ -1,5 +1,5 @@
 ## (In Progress)
-# WhatsApp Chat Viewer
+# WhatsApp Chat Viewer (Parser)
 <p align="center">
   <img src="assets/WhatsappParser.png" width="100">
 </p>
@@ -46,8 +46,8 @@ The goal of this project is to:
 ├── readme.md  
 ├── requirements.txt  
 └── ui  
-    ├── main.ui  
-    └── ui_main.py  
+&emsp;&nbsp; ├── main.ui  
+&emsp;&nbsp; └── ui_main.py  
 
 ## Application Workflow
 
