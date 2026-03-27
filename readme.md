@@ -194,11 +194,7 @@ pyinstaller app.py \
 ```
 ### Windows
 ```cmd
-pyinstaller app.py \
---onefile \
---windowed \
---icon=assets/WP.ico \
---add-data "assets;assets"
+pyinstaller app.py --onefile --windowed --icon=assets/WP.ico --add-data "assets;assets"
 ```
 ### Output
 
