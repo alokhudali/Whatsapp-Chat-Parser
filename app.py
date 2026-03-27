@@ -101,7 +101,7 @@ class WhatsAppViewer(QMainWindow):
         self.messages = messages
         self.detect_users()
 
-        # 🔥 USE MENU MODULE
+        # USE MENU MODULE
         ok, user = show_user_dialog(self, self.users)
 
         if not ok:
