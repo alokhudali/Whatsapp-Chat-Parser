@@ -1,4 +1,3 @@
-## (In Progress)
 # WhatsApp Chat Viewer (Parser)
 <p align="center">
   <img src="assets/WhatsappParser.png" width="100">
@@ -11,6 +10,11 @@ WhatsApp Chat Viewer is a cross-platform desktop application built using PyQt6 t
 The application is designed to work completely offline and efficiently handle real-world chat data, including large files and edge cases.
 
 ---
+## Screenshot
+
+<p align="center">
+  <img src="assets/screenshot.png" width="300">
+</p>
 
 ## Objective
 
