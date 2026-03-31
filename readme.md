@@ -42,12 +42,12 @@ The goal of this project is to:
 ├── assets  
 │   ├── WP.ico  
 │   ├── WhatsappParser.png  
-│   ├── screenshot.png 
+│   ├── screenshot.png  
 │   └── bg.jpg  
 ├── components  
 │   ├── message_bubble.py  
 │   ├── parser.py  
-│   ├── menu.py
+│   ├── menu.py  
 │   └── parser_thread.py  
 ├── readme.md  
 ├── requirements.txt  
