@@ -1,7 +1,9 @@
 # WhatsApp Chat Viewer (Parser)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
 <p align="center">
   <img src="assets/WhatsappParser.png" width="100">
 </p>
+
 
 ## Overview
 
