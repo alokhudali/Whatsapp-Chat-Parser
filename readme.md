@@ -150,12 +150,10 @@ Includes:
 
 ## Possible Extensions (Not yet implemented)
 
-- Message grouping (hide repeated sender names)
-- Inline timestamps within message bubbles
+- Message grouping (hide repeated sender names)  
 - Chat search functionality
 - Analytics (message count, activity timeline)
-- Export to HTML or PDF
-- Application packaging using PyInstaller
+- Export to HTML or PDF  
 
 ---
 
