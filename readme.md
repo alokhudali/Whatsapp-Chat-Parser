@@ -105,10 +105,9 @@ Includes:
 
 ### 6. UI/UX Features
 
-- WhatsApp-like chat layout
-- Dynamic bubble sizing (~72% of available width)
-- Smooth scrolling
-- Static background image
+- WhatsApp-like chat layout  
+- Smooth scrolling  
+- Static background image  
 
 
 ### 7. Performance Optimization
