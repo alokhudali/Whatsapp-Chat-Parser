@@ -37,7 +37,7 @@ Thumbs.db
 # Logs
 *.log
 
-# UI compiled files (optional, ignore if regenerating)
+# UI compiled files
 ui/*.py
 
 # Cache folders anywhere
